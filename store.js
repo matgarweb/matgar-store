@@ -73,7 +73,7 @@
 
   /* contact widget */
   if (S.contact_widget !== "0") {
-    const cv = (k, d) => { const v = String(S[k] == null ? "" : S[k]).trim(); return v === "" ? d : v }, P = cv("cw_phone", "201270266866").replace(/\D/g, ""), ic = {
+    const cv = (k, d) => { const v = String(S[k] == null ? "" : S[k]).trim(); return v === "" ? d : v }, P = cv("cw_phone", "").replace(/\D/g, ""), ic = {
       wa: '<path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.800-1.100-4.600-4-4.700-4.200-.1-.2-1.100-1.500-1.100-2.800s.7-2 1-2.300c.2-.3.500-.3.700-.3h.5c.2 0 .4 0 .6.500l.8 2c.1.2.1.400 0 .5l-.4.600c-.1.200-.3.300-.1.600.7 1.100 1.500 2 2.700 2.600.3.200.5.100.700-.1l.8-1c.2-.3.400-.2.600-.1l1.900.9c.3.100.4.200.5.400 0 .2 0 .8-.2 1.400z"/>',
       ms: '<path d="M12 2C6.500 2 2 6.200 2 11.500c0 2.900 1.300 5.500 3.500 7.200V22l3.200-1.800c1.100.3 2.100.4 3.300.4 5.500 0 10-4.200 10-9.500S17.500 2 12 2zm1 12.800l-2.500-2.700-4.900 2.700 5.400-5.700 2.600 2.700 4.800-2.700-5.400 5.700z"/>',
       fb: '<path d="M14 8V6.500c0-.7.200-1 1.200-1H17V2h-2.800C11.300 2 10 3.700 10 6v2H8v3.500h2V22h4v-10.500h2.700L17 8z"/>',
@@ -81,7 +81,7 @@
       ph: '<path d="M6.600 10.800a15 15 0 0 0 6.600 6.600l2.200-2.200c.3-.3.700-.4 1-.2 1.100.4 2.300.6 3.600.6.600 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.400-1 1-1h3.500c.6 0 1 .4 1 1 0 1.300.2 2.500.6 3.600.1.300 0 .700-.2 1l-2.300 2.200z"/>',
       tt: '<path d="M16.500 2h-3.200v13.200a2.800 2.800 0 1 1-2.800-2.800c.3 0 .6 0 .8.100V9.200a6 6 0 1 0 5.200 5.900V8.500a7.200 7.200 0 0 0 4.200 1.300V6.600A4.300 4.300 0 0 1 16.500 2z"/>'
     };
-    const L = [["wa", "WhatsApp", "#20B038", "https://wa.me/" + P], ["ms", "Messenger", "#0068FF", "https://m.me/" + cv("cw_ms", "663625230164164")], ["fb", "Facebook", "#1877F2", "https://www.facebook.com/" + cv("cw_fb", "663625230164164")], ["ig", "Instagram", "#F00073", "https://www.instagram.com/" + cv("cw_ig", "mtb5eee") + "/"], ["ph", "اتصل بينا", "#29CC6A", "tel:+" + P], ["tt", "TikTok", "#000000", "https://www.tiktok.com/@" + cv("cw_tt", "0mtb5e")]];
+    const L = [["wa", "WhatsApp", "#20B038", "https://wa.me/" + P], ["ms", "Messenger", "#0068FF", "https://m.me/" + cv("cw_ms", "")], ["fb", "Facebook", "#1877F2", "https://www.facebook.com/" + cv("cw_fb", "")], ["ig", "Instagram", "#F00073", "https://www.instagram.com/" + cv("cw_ig", "") + "/"], ["ph", "اتصل بينا", "#29CC6A", "tel:+" + P], ["tt", "TikTok", "#000000", "https://www.tiktok.com/@" + cv("cw_tt", "")]];
     const cw = document.createElement("div"); cw.className = "cw";
     cw.innerHTML = '<div class="cw-list">' + L.map(x => '<a class="cw-i" data-t="' + x[1] + '" style="background:' + x[2] + '" href="' + x[3] + '"' + (x[3].startsWith("tel:") ? "" : ' target="_blank" rel="noopener"') + ' aria-label="' + x[1] + '"><svg width="24" height="24" viewBox="0 0 24 24" fill="#fff">' + ic[x[0]] + '</svg></a>').join("") + '</div><button class="cw-main" type="button" aria-label="تواصل معانا"><svg width="26" height="26" viewBox="0 0 24 24" fill="#fff"><path d="M4 4h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H9l-5 4v-4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/></svg></button><span class="cw-t">تواصل معانا</span>';
     cw.querySelector(".cw-main").onclick = () => cw.classList.toggle("open");
