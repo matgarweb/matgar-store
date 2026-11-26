@@ -25,7 +25,6 @@ export const onRequest = async (c) => {
 
 const handle = async (c) => {
   const p = new URL(c.request.url).pathname.replace(/\/+$/, "") || "/";
-  if (p === "/google9e1317c29e841629.html") return new Response("google-site-verification: google9e1317c29e841629.html", { headers: { "content-type": "text/html; charset=utf-8" } });
   if (!/^\/(sitemap\.xml|robots\.txt|llms\.txt|feed\/|api\/)/.test(p)) { try { const S = await L.settings(); if (S.maintenance_on === "1") { const wa = String(S.whatsapp || "").replace(/\D/g, ""), msg = String(S.maintenance_msg || "المتجر في صيانة قصيرة ونرجع لك قريباً. شكراً لصبرك.").slice(0, 400), nm = String(S.store_name || "المتجر"); return new Response(`<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>${L.esc(nm)}</title><style>body{font-family:system-ui,sans-serif;background:#f8f4ef;display:flex;min-height:100vh;align-items:center;justify-content:center;margin:0;text-align:center;color:#333}div{max-width:460px;padding:24px}a{display:inline-block;margin-top:14px;background:#25d366;color:#fff;padding:10px 22px;border-radius:22px;text-decoration:none}</style></head><body><div><h1>${L.esc(nm)}</h1><p>${L.esc(msg)}</p>${wa ? `<a href="https://wa.me/${wa}">كلمنا على واتساب</a>` : ""}</div></body></html>`, { status: 503, headers: { "content-type": "text/html; charset=utf-8", "Retry-After": "600", "Cache-Control": "no-store" } }) } } catch (e) {} }
   let h = null;
   if (p === "/") h = home;
