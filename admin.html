@@ -1,0 +1,13 @@
+<!DOCTYPE html><html lang="ar" dir="rtl"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow">
+<title>لوحة التحكم</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="style.css?v=20261126a"><link rel="stylesheet" href="admin.css?v=20261125w"></head><body class="adm">
+<div id="login" class="box loginbox"><h2>لوحة التحكم</h2><input id="em" type="email" placeholder="الإيميل" autocomplete="username"><input id="pw" type="password" placeholder="الباسورد" autocomplete="current-password"><input id="ic" placeholder="كود الدعوة" style="display:none"><button id="loginBtn" class="full">دخول</button><p><a href="#" id="invT" onclick="return false" style="font-size:13px">حساب موظف بكود دعوة</a></p><p id="err" class="msg"></p></div>
+<div id="app" class="shell" style="display:none">
+<aside id="side"><div class="logo">لوحة التحكم</div><nav id="nav"></nav><a class="navl" href="/" target="_blank">فتح المتجر</a><button class="red full" id="lo">خروج</button></aside>
+<div id="shade"></div>
+<main><div class="topbar"><button id="menu" class="gray">☰</button><b id="ptitle"></b></div><div id="view" class="content"></div></main>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="config.js?v=20261126a"></script><script src="sanitize.js?v=20261125w"></script><script src="admin.js?v=20261125w"></script><script src="import.js?v=20261125w"></script>
+</body></html>
