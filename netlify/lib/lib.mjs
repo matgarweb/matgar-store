@@ -1,8 +1,8 @@
 import { sanitizeHtml, toText } from "./sanitize.mjs";
 // Shared helpers for the server-rendered pages (Netlify Functions).
 // Only PUBLIC data is read, with the public (publishable) key. No private table is touched.
-const SUPABASE_URL = (globalThis.process && process.env.SUPABASE_URL) || "__SUPABASE_URL__";
-const SUPABASE_KEY = (globalThis.process && process.env.SUPABASE_KEY) || "__SUPABASE_KEY__";
+const SUPABASE_URL = (globalThis.process && process.env.SUPABASE_URL) || "https://jqnuvrpltyfpusvfrouc.supabase.co";
+const SUPABASE_KEY = (globalThis.process && process.env.SUPABASE_KEY) || "sb_publishable_y5gxi2ZIuc8WiDMxKUNCHg_RMolyDh2";
 
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 const fmt = n => Number(n || 0).toLocaleString("en-US", { maximumFractionDigits: 2 });
@@ -115,7 +115,7 @@ const tickerHtml = S => {
   const st = [col(S.ticker_bg) && `--tkbg:${col(S.ticker_bg)}`, col(S.ticker_fg) && `--tkfg:${col(S.ticker_fg)}`, `--tks:${secs.toFixed(1)}s`].filter(Boolean).join(";");
   return `<div class="tk" style="${st}" role="region" aria-label="إعلانات"><div class="tk-t"><div class="tk-g">${one}</div><div class="tk-g" aria-hidden="true">${one}</div></div></div>`;
 };
-const INTRO_DEFAULT = "متخصصون في توفير جميع أدوات ورفايع المطبخ العصرية بأسعار الجملة الحقيقية من أول قطعة، نجمع لك بين الجودة والخامات والتوفير العالي بدون حد أدنى للشراء.";
+const INTRO_DEFAULT = "نوفر لك منتجات مختارة بعناية بأسعار الجملة من أول قطعة، نجمع لك بين الجودة والسعر المناسب بدون حد أدنى للشراء.";
 const introHtml = S => {
   if (S.intro_on === "0") return "";
   const t = String(S.intro_text === undefined ? INTRO_DEFAULT : S.intro_text).trim().slice(0, 400);
@@ -168,7 +168,7 @@ ${prev ? `<link rel="prev" href="${esc(b + prev)}">` : ""}${next ? `<link rel="n
 ${ogImg ? `<meta property="og:image" content="${esc(ogImg)}">` : ""}
 <meta name="twitter:card" content="${ogImg ? "summary_large_image" : "summary"}"><meta name="twitter:title" content="${esc(og.title || title)}"><meta name="twitter:description" content="${esc(desc)}">
 ${favicon ? `<link rel="icon" href="${esc(favicon)}">` : ""}
-<link rel="preconnect" href="__SUPABASE_URL__" crossorigin><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://jqnuvrpltyfpusvfrouc.supabase.co" crossorigin><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=${FONTS[font]}&display=swap">
 <link rel="stylesheet" href="/style.css">
 <style>:root{--primary:${color};--accent:${accent};--font:'${font}';--logo:${logoPx}px${bgc ? `;--bg:${bgc}` : ""}}</style>

@@ -1,5 +1,5 @@
 // Payment gateway helpers (Paymob + OPay). Runs in Cloudflare Pages Functions. Secrets come from Supabase Vault through a secret-gated RPC, never from the browser.
-const SB = "__SUPABASE_URL__/rest/v1", KEY = "__SUPABASE_KEY__";
+const SB = "https://jqnuvrpltyfpusvfrouc.supabase.co/rest/v1", KEY = "sb_publishable_y5gxi2ZIuc8WiDMxKUNCHg_RMolyDh2";
 export const json = (o, s = 200) => new Response(JSON.stringify(o), { status: s, headers: { "content-type": "application/json; charset=utf-8", "cache-control": "no-store" } });
 export async function rpc(name, args, token) {
   const r = await fetch(`${SB}/rpc/${name}`, { method: "POST", headers: { apikey: KEY, Authorization: "Bearer " + (token || KEY), "Content-Type": "application/json" }, body: JSON.stringify(args || {}) });
