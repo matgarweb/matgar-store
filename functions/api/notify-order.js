@@ -1,5 +1,5 @@
 // POST /api/notify-order  (called by the database trigger). Builds the invoice PDF and sends it to the owner's Telegram bot.
-const SB = "__SUPABASE_URL__/rest/v1", KEY = "__SUPABASE_KEY__";
+const SB = "https://jqnuvrpltyfpusvfrouc.supabase.co/rest/v1", KEY = "sb_publishable_y5gxi2ZIuc8WiDMxKUNCHg_RMolyDh2";
 const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 const fmt = n => Number(n).toLocaleString("en-US", { maximumFractionDigits: 2 });
 const safeUrl = u => (/^https:\/\//.test(u || "") ? u : "");
@@ -59,7 +59,7 @@ export const onRequestPost = async ({ request, env }) => {
   if (/^Bearer /i.test(auth)) {
     // Admin download: verify the signed-in admin, read the order under their own permissions.
     const H = { apikey: KEY, Authorization: auth };
-    const u = await fetch("__SUPABASE_URL__/auth/v1/user", { headers: H });
+    const u = await fetch("https://jqnuvrpltyfpusvfrouc.supabase.co/auth/v1/user", { headers: H });
     if (!u.ok || !/^[0-9a-f-]{36}$/i.test(String(d.order_id || ""))) return new Response("forbidden", { status: 403 });
     const r = await (await fetch(`${SB}/orders?id=eq.${d.order_id}&select=order_no,customer_name,phone,address,governorate,notes,total,created_at,payment_method,payment_status,payment_ref,order_items(product_id,product_name,qty,unit_price)`, { headers: H })).json().catch(() => []);
     if (!Array.isArray(r) || !r[0]) return new Response("not found", { status: 404 });
